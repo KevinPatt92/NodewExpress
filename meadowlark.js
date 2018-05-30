@@ -1,5 +1,7 @@
 var express = require('express');
 
+var fortune = require('./lib/fortune.js');
+
 var app = express();
 
 //set up handlebars view engine
@@ -10,16 +12,6 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars' );
 
 app.set('port', process.env.PORT || 3000);
-
-//Fortune cookies
-
-var fortunes = [
-    "Conquer your fears",
-    "Be the river",
-    "Have no fear",
-    "Hail Satan",
-    "Its the economy stupid"
-];
 
 //static middleware
 
@@ -34,9 +26,7 @@ app.get('/', function(req, res){
 //About Page
 
 app.get('/about', function(req, res){
-    var randomFortune =
-        fortunes[Math.floor(Math.random() * fortunes.length)];
-    res.render('about', {fortune: randomFortune });
+    res.render('about', {fortune: fortune.getFortune() } );
 });
 
 //custom 404
