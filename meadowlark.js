@@ -39,6 +39,20 @@ app.get('/jquery-test', function(req, res){
 	res.render('jquery-test');
 });
 
+//Nursery Rhyme Routing
+
+app.get('/nursery-rhyme', function(req, res){
+	res.render('nursery-rhyme');
+});
+app.get('/data/nursery-rhyme', function(req, res){
+	res.json({
+		animal: 'squirrel',
+		bodyPart: 'tail',
+		adjective: 'bushy',
+		noun: 'heck',
+	});
+});
+
 //Weather partial contexts
 
 function getWeatherData(){
